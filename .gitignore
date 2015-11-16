@@ -1,2 +1,3 @@
-*.png
-*.path
+mod_server/node_modules/
+mod_server/npm-debug.log
+

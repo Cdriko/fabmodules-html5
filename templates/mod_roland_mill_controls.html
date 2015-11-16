@@ -1,25 +1,34 @@
 <br><b>output</b>
 <br>machine
 <select id="mod_roland_machine">
+	<option value="default"></option>
 	<option value="mdx_20">MDX-20</option>
 	<option value="mdx_40">MDX-40</option>
 	<option value="srm_20">SRM-20</option>
 </select>
-
 <br>speed (mm/s):
-&nbsp;<input type="text" id="mod_speed" size="3" value="4">
-<br>jog height (mm):
-&nbsp;<input type="text" id="mod_jog" size="3" value="1">
-<br>xmin (mm):
-&nbsp;<input type="text" id="mod_xmin" size="3" value="20">
-<br>ymin (mm):
-&nbsp;<input type="text" id="mod_ymin" size="3" value="20">
-<br>zmin (mm):
-&nbsp;<input type="text" id="mod_zmin" size="3" value="20">
-
-
+&nbsp;<input type="text" id="mod_speed" size="3" value="">
+<br>x0 (mm):
+&nbsp;<input type="text" id="mod_x0" size="3" value="">
+<br>y0 (mm):
+&nbsp;<input type="text" id="mod_y0" size="3" value="">
+<br>z0 (mm):
+&nbsp;<input type="text" id="mod_z0" size="3" value="">
 {{#if show_move }}
- <br><input type="button" id="mod_move" value="move to xmin,ymin">
+<br><input type="button" id="mod_move_xyz" value="move to xyz0">
+{{/if }}
+<br>zjog (mm):
+&nbsp;<input type="text" id="mod_jog" size="3" value="">
+{{#if show_move }}
+<br><input type="button" id="mod_move_xy" value="move to xy0 zjog">
+{{/if }}
+<br>xhome (mm):
+&nbsp;<input type="text" id="mod_xhome" size="3" value="">
+<br>yhome (mm):
+&nbsp;<input type="text" id="mod_yhome" size="3" value="">
+<br>zhome (mm):
+&nbsp;<input type="text" id="mod_zhome" size="3" value="">
+{{#if show_move }}
+<br><input type="button" id="mod_home" value="move to xyzhome and stop">
 {{/if }}
 
-<br><input type="button" id="mod_home" value="move home and stop"> 
