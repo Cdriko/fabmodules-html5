@@ -93,10 +93,10 @@ define(['require', 'handlebars', 'mods/mod_ui', 'mods/mod_globals', 'text!templa
          ["controls", "mod_path_image_3D_controls"],
          ["routine", "mod_SmG_path"],
          ["command", "gedit"],
-         ["cut_speed", "50"],
+         ["cut_speed", "10"],
          ["plunge_speed", "25"],
-         ["spindle_speed", "10000"],
-         ["diameter", "3.175"],
+         ["spindle_speed", "24000"],
+         ["diameter", "3"],
          ["length", "25.4"],
          ["overlap", "50"],
          ["error", "1.5"],
@@ -169,13 +169,13 @@ define(['require', 'handlebars', 'mods/mod_ui', 'mods/mod_globals', 'text!templa
          //
          // move up to starting point
          //
-         str += "Z" + jog_height.toFixed(4) + "\n"
+         str += "G0Z" + jog_height.toFixed(4) + "\n"
          str += "G00X" + x.toFixed(4) + "Y" + y.toFixed(4) + "Z" + jog_height.toFixed(4) + "\n"
          //
          // move down
          //
          str += "G01Z" + z.toFixed(4) + " F" + plunge_speed.toFixed(4) + "\n"
-         str += "F" + cut_speed.toFixed(4) + "\n" //restore XY feed rate
+         
          for (var pt = 1; pt < path[seg].length; ++pt) {
             //
             // move to next point
@@ -183,7 +183,7 @@ define(['require', 'handlebars', 'mods/mod_ui', 'mods/mod_globals', 'text!templa
             x = xoffset + scale * path[seg][pt][0]
             y = yoffset + scale * path[seg][pt][1]
             z = zoffset + scale * path[seg][pt][2]
-            str += "G01X" + x.toFixed(4) + "Y" + y.toFixed(4) + "Z" + z.toFixed(4) + "\n"
+            str += "G01X" + x.toFixed(4) + "Y" + y.toFixed(4) + "Z" + z.toFixed(4) + "F" + cut_speed.toFixed(4) + "\n" 
          }
       }
       //
